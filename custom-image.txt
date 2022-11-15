@@ -1,0 +1,14 @@
+Docker instructions for creating custom image
+
+docker pull httpd:2.4
+docker run --name webtemplate -d httpd:2.4
+docker exec -it webtemplate bash
+apt update && apt install git -y
+git clone [this repo]
+rm htdocs/index.html
+cp -r [this repo]/* htdocs/
+rm -rf [this repo]
+apt remove git -y && apt autoremove -y && apt clean 
+exit
+
+docker commit [container id] mpjwarren/isitlunch:v[version]
